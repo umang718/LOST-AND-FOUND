@@ -1,21 +1,23 @@
+import Hamburger from "./Hamburger";
 import LightMode from "./LightMode";
 import NavButton from "./NavButton";
 import NavItem from "./NavItem";
 
 const Navigation = () => {
-
     return (
-        <div className = "border  relative  shadow-md rounded duration-300 ease-in-out py-2 dark:bg-gray-800 theme text-gray-600 dark:text-gray-300 dark:border-gray-700" style={{ "zIndex": "26", "width": "98%", "marginLeft": "1%", "marginTop": "10px" }}>
-            <nav className = "flex justify-between items-center px-4 xl:px-10">
-                <a className = "filter brightness-0 invert text-2xl leading-none" href="#">
-                    <img className = "filter brightness-0 invert" src="" alt="" width="auto" style= {{"height": "3rem"}} />
+        <div>
+            <nav className = "flex border relative  shadow-md rounded duration-300 ease-in-out py-2 dark:bg-midnight-200 theme text-gray-600 dark:text-gray-300 dark:border-gray-700 justify-between items-center px-4 xl:px-10" style={{ "zIndex": "26", "width": "98%", "marginLeft": "1%", "marginTop": "10px" }}>
+                <a className = "text-2xl leading-none" href="#">
+                    <img className = "dark:hidden" src="./light.png" alt="" width="auto" style= {{"height": "3rem"}} />
+                    <img className = "hidden dark:inline" src="./dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
                 </a>
 
                 <ul className = "lg:ml-auto lg:mr-6 lg:items-center lg:space-x-2 flex justify-center items-center">
                     <li className = "hidden lg:block">
                         <ul className = "lg:ml-auto lg:items-center lg:space-x-12 flex justify-center items-center">
                             <NavItem>Home</NavItem>
-                            <NavItem>Lost & Found</NavItem>
+                            <NavItem>About Us</NavItem>
+                            <NavItem>Support</NavItem>
                         </ul>
                     </li>
 
@@ -23,12 +25,7 @@ const Navigation = () => {
                         <LightMode></LightMode>
                     </li>
                     <li className = "lg:hidden px-4 h-10 flex justify-center items-center">
-                        <button className = "navbar-burger duration-75 ease-in-out flex items-center rounded focus:outline-none relative top-px">
-                            <svg className = "block h-4 w-4  dark:text-gray-200" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                <title>Mobile menu</title>
-                                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                            </svg>
-                        </button>
+                        <Hamburger></Hamburger>
                     </li>
                 </ul>
                 <div className = "hidden lg:block" x-data="{isProfileMenuOpen: false}">
@@ -52,24 +49,19 @@ const Navigation = () => {
                     </div>
                     <div>
                         <ul>
-                            <li className = "lg:flex mb-1">
-                                <a className = "block p-4 text-sm font-medium   text-gray-900 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-indigo-100 hover:bg-gray-50 hover:text-indigo-500 rounded" href="https://phpstack-442692-2074255.cloudwaysapps.com/blog">Blog
-                                </a>
-                            </li>
-                            <li className = "lg:flex mb-1">
-                                    <a className = "block p-4 text-sm font-medium   text-gray-900 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-indigo-100 hover:bg-gray-50 hover:text-indigo-500 rounded" href="https://phpstack-442692-2074255.cloudwaysapps.com/faq">Help</a>
-                            </li>                                        
+                            <NavItem>Home</NavItem>
+                            <NavItem>Lost & Found</NavItem>
                         </ul>
                     </div>
                     <div className = "mt-auto">
                         <div className = "pt-6">
-                            <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="https://phpstack-442692-2074255.cloudwaysapps.com/user/login">
-                                Login To User
+                            <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="#">
+                                LogIn
                             </a>
                         </div>
                         <div className = "pt-6">
-                            <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="https://phpstack-442692-2074255.cloudwaysapps.com/provider/login">
-                                Login To Provider
+                            <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="#">
+                                SignUp
                             </a>
                         </div>                
                     </div>
