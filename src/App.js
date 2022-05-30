@@ -6,13 +6,14 @@ import FeedCard from "./components/feed/FeedCard";
 import Button from "./components/ui/Button";
 // import NavItem from "./components/navbar/NavItem";
 import Navigation from "./components/navbar/Navigation";
+import Login from "./components/login/Login";
 
 
 const App = () =>  {
     return (
         <>
             {/* <NavItem></NavItem> */}
-            <Navigation></Navigation>
+            {/* <Navigation></Navigation>
             <Form>
                 <Input label = "Input Field" />
                 <Password />
@@ -23,7 +24,8 @@ const App = () =>  {
                 <FeedCard></FeedCard>
                 <FeedCard></FeedCard>
                 <FeedCard></FeedCard>
-            </div>
+            </div> */}
+            <Login> </Login>
         </> 
     );
 }
