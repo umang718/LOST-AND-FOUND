@@ -7,6 +7,9 @@ import Button from "./components/ui/Button";
 // import NavItem from "./components/navbar/NavItem";
 import Navigation from "./components/navbar/Navigation";
 import Login from "./components/login/Login";
+import Homepage from "./components/homepage/Homepage";
+import SignupMessage from "./components/signup/SignupMessage";
+import Signup from "./components/signup/Signup";
 
 
 const App = () =>  {
@@ -25,7 +28,17 @@ const App = () =>  {
                 <FeedCard></FeedCard>
                 <FeedCard></FeedCard>
             </div> */}
-            <Login> </Login>
+            {/* <Login> 
+
+            </Login> */}
+            {/* <Homepage>
+
+            </Homepage>  */}
+
+            <Signup>
+            
+            </Signup>
+
         </> 
     );
 }
