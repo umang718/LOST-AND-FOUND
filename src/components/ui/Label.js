@@ -1,6 +1,6 @@
 const Label = (props) => {
     return (
-        <label className = "block text-gray-700 text-sm font-bold mb-2" for = {props.label}>
+        <label className = "w-full text-left block text-gray-700 text-sm font-bold mb-2" htmlFor = {props.label}>
             {props.label}
         </label>
     );
