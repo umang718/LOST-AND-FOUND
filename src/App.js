@@ -1,10 +1,14 @@
-import ProfileIndex from "./components/profile/ProfileIndex";
+import Navigation from "./components/layout/navbar/Navigation";
+import Content from "./components/layout/Content";
+import Footer from "./components/layout/Footer";
 
 const App = () =>  {
     return (
         <>
-            <ProfileIndex></ProfileIndex>
-        </> 
+            <Navigation></Navigation>
+            <Content></Content>
+            <Footer></Footer>
+        </>
     );
 }
 
