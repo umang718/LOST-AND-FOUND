@@ -5,7 +5,7 @@ const Email =(props) =>{
             <label class="block">
             <span class="block text-sm font-medium text-slate-700">Email</span>
             <input type="email" class="peer ... w-full h-9 rounded"/>
-            <p class="mt-2 invisible peer-invalid:visible text-red-600 text-sm">
+            <p class="mt-1 invisible peer-invalid:visible text-red-600 text-sm">
             Please provide a valid email address.
             </p>
         </label>

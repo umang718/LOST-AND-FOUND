@@ -6,10 +6,10 @@ import FeedCard from "./components/feed/FeedCard";
 import Button from "./components/ui/Button";
 // import NavItem from "./components/navbar/NavItem";
 import Navigation from "./components/navbar/Navigation";
-import Login from "./components/login/Login";
-import Homepage from "./components/homepage/Homepage";
+import LoginIndex from "./components/login/LoginIndex";
+import HomepageIndex from "./components/feed/HomepageIndex";
 import SignupMessage from "./components/signup/SignupMessage";
-import Signup from "./components/signup/Signup";
+import SignupIndex from "./components/signup/SignupIndex";
 
 
 const App = () =>  {
@@ -28,16 +28,16 @@ const App = () =>  {
                 <FeedCard></FeedCard>
                 <FeedCard></FeedCard>
             </div> */}
-            {/* <Login> 
+            {/* <LoginIndex> 
 
-            </Login> */}
-            <Homepage>
+            </LoginIndex> */}
+            {/* <HomepageIndex>
 
-            </Homepage> 
+            </HomepageIndex>  */}
 
-            {/* <Signup>
+            <SignupIndex>
             
-            </Signup> */}
+            </SignupIndex>
 
         </> 
     );
