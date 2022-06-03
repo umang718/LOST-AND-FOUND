@@ -1,73 +1,39 @@
 import FeedCard from "../feed/FeedCard";
+import Button from "../ui/Button";
 import Input from "../ui/Input";
 
 const Homepage = () => {
-    return (
+  return (
+    <div className="px-6 bg-[#DBF4F9] min-h-screen">
+      <div className = "grid grid-cols-4">
+        <div className = "col-span-3"><Input className=" w-3/12 mt-5 "></Input></div>
         <div>
-            <Input className="mt-10 w-80 ml-5">
-            </Input>
-        <div className="bg-[#DBF4F9] grid md:grid-cols-2 grid-cols-1 gap-4 gap-y-4 lg:grid-cols-4">
-            
-            
-            <FeedCard className="my-auto mx-auto">
-                <div className=""></div>
-            </FeedCard> 
-            
-            <FeedCard className="my-auto mx-auto ">
-                <div className=""></div>
-            </FeedCard> 
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            <FeedCard className="my-auto mx-auto">
-
-            </FeedCard>
-            
-            
-           
-
+            <Button className=" mt-5 ml-72">Filter</Button>
         </div>
-        </div>
-    );
+        
+      </div>
+      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 gap-y-4 lg:grid-cols-4">
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+        <FeedCard className="my-auto mx-auto"></FeedCard>
+      </div>
+    </div>
+  );
 };
 
 export default Homepage;

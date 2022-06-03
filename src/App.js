@@ -31,13 +31,13 @@ const App = () =>  {
             {/* <Login> 
 
             </Login> */}
-            {/* <Homepage>
+            <Homepage>
 
-            </Homepage>  */}
+            </Homepage> 
 
-            <Signup>
+            {/* <Signup>
             
-            </Signup>
+            </Signup> */}
 
         </> 
     );
