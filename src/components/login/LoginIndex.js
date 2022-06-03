@@ -5,12 +5,12 @@ import Input from "../ui/Input";
 import Password from "../ui/Password";
 import LoginMessage from "./LoginMessage";
 
-const Login = () => {
+const LoginIndex = () => {
   return (
     <div className="bg-[#DBF4F9] min-h-screen grid grid-cols-1 md:grid-cols-2 ">
       <LoginMessage></LoginMessage>
       <Card className="bg-white h-fit pt-20 pb-10 my-auto w-7/12 mx-auto">
-        <Input placeholder="Username" className="mb-5" />
+        <Input label="Username" className="mb-5" />
         <Password placeholder="Password"/>
 
         <div className="text-right text-xs relative bottom-4">
@@ -26,4 +26,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginIndex;

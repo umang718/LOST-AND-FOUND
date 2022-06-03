@@ -1,12 +1,12 @@
-import FeedCard from "../feed/FeedCard";
+import FeedCard from "./FeedCard";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
-const Homepage = () => {
+const HomepageIndex = () => {
   return (
     <div className="px-6 bg-[#DBF4F9] min-h-screen">
       <div className = "grid grid-cols-4">
-        <div className = "col-span-3"><Input className=" w-3/12 mt-5 "></Input></div>
+        <div className = "col-span-3"><Input label="Search" className=" w-3/12 mt-5 "></Input></div>
         <div>
             <Button className=" mt-5 ml-72">Filter</Button>
         </div>
@@ -36,4 +36,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomepageIndex;
