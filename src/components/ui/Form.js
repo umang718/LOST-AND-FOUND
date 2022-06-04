@@ -9,13 +9,14 @@ const Form = (props) => {
  
     return (
         <Card className = { classes }>
-            <form onSubmit = { submitHandler }> { props.children } </form>
+            <form onSubmit = { submitHandler } encType={props.encType}> { props.children } </form>
         </Card>
     );
 }
 
 Card.defaultProps = {
     containsFiles : false,
+    encType : "multipart/form-data"
 }
 
 export default Form
