@@ -23,10 +23,10 @@ const Navigation = () => {
                 <ul className = "lg:ml-auto lg:mr-6 lg:items-center lg:space-x-2 flex justify-center items-center">
                     <li className = "hidden lg:block">
                         <ul className = "lg:ml-auto lg:items-center lg:space-x-12 flex justify-center items-center">
-                            <NavItem>Home</NavItem>
+                            <NavItem link = "/">Home</NavItem>
                             <NavItem>Feed</NavItem>
                             <NavItem>About Us</NavItem>
-                            <NavItem>Support</NavItem>
+                            <NavItem link = "/contactUs">Support</NavItem>
                         </ul>
                     </li>
 
@@ -62,10 +62,10 @@ const Navigation = () => {
                         </div>
                         <div>
                             <ul>
-                                <NavItem>Home</NavItem>
+                                <NavItem link = "/">Home</NavItem>
                                 <NavItem>Feed</NavItem>
                                 <NavItem>About Us</NavItem>
-                                <NavItem>Support</NavItem>
+                                <NavItem link = "/contactUs">Support</NavItem>
                             </ul>
                         </div>
                         <div className = "mt-auto">

@@ -1,13 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+
+import FeedCard from "./components/feed/FeedCard"
+import ContactIndex from "./components/contactUs/ContactIndex";
 import Navigation from "./components/layout/navbar/Navigation";
-import Content from "./components/layout/Content";
-import Footer from "./components/layout/Footer";
 
 const App = () =>  {
     return (
         <>
             <Navigation></Navigation>
-            <Content></Content>
-            <Footer></Footer>
+            <Routes>
+                <Route path = "/" exact element = { <FeedCard /> } />
+                <Route path = "/contactUs" exact element = { <ContactIndex /> } />
+            </Routes>
         </>
     );
 }

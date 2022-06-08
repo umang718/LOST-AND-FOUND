@@ -24,9 +24,6 @@ const SignupIndex = () =>
                 
 
             </Card>
-
-
-
         </div>
     );
 };

@@ -1,24 +1,12 @@
-import Input from '../ui/Input';
-import Form from '../ui/Form';
-import Textarea from '../ui/Textarea';
+import ContactForm from "./ContactForm"
+import ProfileCover from "./ProfileCover";
 
 const ContactIndex = () => {
     return (
-        <section className = "relative py-10">
-            <div className = "w-full lg:w-1/2 px-4 mx-auto">
-                <Form className = "bg-opacity-75 border-gray-100 backdrop-blur-sm" action = "" method = "post">
-                    <h3 className = "text-sm font-semibold font-heading dark:text-blue-100 text-orange-800">{ "Got Something In Mind?" }</h3>
-                    <span className = "mb-8 text-5xl inline-block text-gray-700 dark:text-gray-400 font-bold">Contact Us</span>
-                    
-                    <Input label = "Name" name = "name"></Input>
-                    <Input type = "email" label = "Email" name = "email"></Input>
-                    <Input label = "Subject" name = "subject"></Input>
-                    <Textarea   placeholder = "What's on your mind?" name = "description"></Textarea>
-
-                    <button className = "w-full inline-block py-4 text-sm text-white font-medium leading-normal bg-red-400 hover:bg-red-300 rounded transition duration-200">Send</button>
-                </Form>
-            </div>
-        </section>
+        <div style={{ backgroundSize: "cover", backgroundImage: `url("./images/shape1.svg")` }}>
+            <ProfileCover></ProfileCover>
+            <ContactForm></ContactForm>
+        </div>
     );
 }
 
