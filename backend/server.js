@@ -6,7 +6,7 @@ dotenv.config({path: "./config/.env"});
 
 connectDB();
 app.get('/', (req, res) => {
-    res.send('Hello World!!!')
+    res.send('Hello Umang!!!')
 });
 
 app.listen(process.env.PORT, () => {
