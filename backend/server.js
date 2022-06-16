@@ -4,13 +4,9 @@ const connectDB = require("./config/db");
 
 env.config({path: "./config/.env"});
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!!!')
-// });
-
-// Route imports
-const items = require("./routes/ItemRoutes");
-app.use("/api/v1/items", items);
+app.get('/', (req, res) => {
+    res.status(200).json({msg: "Hello Son"})
+});
 
 const start = async() => {
     try {

@@ -16,14 +16,14 @@ const SubNav = props => {
     return (
         <ul className = "tab-head flex mb-0 list-none pb-4 flex-col my-4">
             <li className = "mr-2 mb-2 last:mr-0 text-center">
-                <a className = "text-xs font-bold uppercase cursor-pointer px-5 py-3 shadow-lg rounded block leading-normal text-white bg-blue-500" onClick = { () => { tabHandler("#home") } } id="#home">
+                <button className = "text-xs font-bold uppercase cursor-pointer px-5 py-3 shadow-lg rounded block leading-normal text-white bg-blue-500" onClick = { () => { tabHandler("#home") } } id="#home">
                     <i className = "fa fa-space-shuttle text-base mr-1"></i> Change Profile
-                </a>
+                </button>
             </li>
             <li className = "mr-2 mb-2 last:mr-0 text-center">
-                <a className = "text-xs font-bold uppercase cursor-pointer px-5 py-3 shadow-lg rounded block leading-normal text-blue-500 bg-white dark:text-gray-300 dark:bg-gray-800" onClick = { () => { tabHandler("#password") } } id="#password">
+                <button className = "text-xs font-bold uppercase cursor-pointer px-5 py-3 shadow-lg rounded block leading-normal text-blue-500 bg-white dark:text-gray-300 dark:bg-gray-800" onClick = { () => { tabHandler("#password") } } id="#password">
                     <i className = "fa fa-cog text-base mr-1"></i> Change Password
-                </a>
+                </button>
             </li>
         </ul>
     );

@@ -1,7 +1,7 @@
 const LoginMessage = () => {
     return (
         <div className=" m-auto font-family:Courier New  text-center">
-            <img className="m-auto" src = "./images/lost.png"  width="200" height="200"></img>
+            <img alt = "" className="m-auto" src = "./images/lost.png"  width="200" height="200"></img>
             <br/>
            
             Lost something.... <br/>

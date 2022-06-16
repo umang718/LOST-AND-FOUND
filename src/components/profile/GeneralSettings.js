@@ -10,7 +10,7 @@ const GeneralSettings = () => {
             <div className = "flex flex-wrap -mx-4 -mb-4 md:mb-0">
                 <div className = "w-full px-4 mb-4 md:mb-0 md:w-1/2">
                     <div className = "h-full flex flex-col items-center justify-center relative" x-data="avatarComponentData()">
-                        <img className = "rounded-full object-cover" src="./images/avatar.png" style = {{ "width": "150px", "height": "150px" }} alt = "Image Not Found" />
+                        <img className = "rounded-full object-cover" src="./images/avatar.png" style = {{ "width": "150px", "height": "150px" }} alt = "Not Found" />
                         <label htmlFor="avatar" title="Select New Avatar" className = "relative">
                             <FontAwesomeIcon className = "rounded-full text-white bg-blue-600 absolute fa-pencil cursor-pointer" style = {{"fontSize": "12px", "padding": "8px", "right": "-72px", "bottom": "94px"}} icon = { faPen }></FontAwesomeIcon>
                         </label>
@@ -30,7 +30,7 @@ const GeneralSettings = () => {
                 </div>
             </div>
             <div className = "flex justify-end">
-                <button type="submit" className = "right-0 inline-block py-1 px-4 leading-loose bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-200 text-sm" type="submit">Save Changes</button>
+                <button type="submit" className = "right-0 inline-block py-1 px-4 leading-loose bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-200 text-sm">Save Changes</button>
             </div>
         </Form>
     );
