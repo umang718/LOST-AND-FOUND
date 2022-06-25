@@ -17,7 +17,6 @@ const LoginIndex = () => {
                 <div className="text-right text-xs relative bottom-4">
                     <span href=""> Forgot Password?</span>
                 </div>
-                
 
                 <Button className="mx-auto mb-2">LOGIN</Button>
                 <div>Don't have an account!</div>

@@ -1,5 +1,6 @@
 {
   "name": "LoFo",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "node ./server.js",
     "dev": "nodemon ./server.js"
@@ -7,6 +8,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http-status-codes": "^2.2.0",
@@ -16,6 +18,7 @@
     "mongoose": "^6.3.5",
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
-    "randomstring": "^1.2.2"
+    "randomstring": "^1.2.2",
+    "react-update": "^0.4.4"
   }
 }

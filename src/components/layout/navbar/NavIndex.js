@@ -1,15 +1,15 @@
-import { useState, useContext } from "react";
-import Hamburger from "./Hamburger";
-import LightMode from "./LightMode";
-import NavButton from "./NavButton";
-import NavItem from "./NavItem";
-import { AuthContext } from "../../contexts/authContext";
-
 import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+
+import NavItem from "./NavItem";
+import Hamburger from "./Hamburger";
+// import LightMode from "./LightMode";
+import NavButton from "./NavButton";
+import { AuthContext } from "../../contexts/authContext";
 
 const Navigation = () => {
     const [showMenu, toggleMenu] = useState(false);
-    const [isLoggedIn, setAuthStatus] = useContext(AuthContext);
+    const authCntxt = useContext(AuthContext);
 
     const menuToggleHandler = () => {
         toggleMenu(!showMenu)
@@ -19,8 +19,8 @@ const Navigation = () => {
         <div>
             <nav className = "flex border relative  shadow-md rounded duration-300 ease-in-out py-2 dark:bg-midnight-200 theme text-gray-600 dark:text-gray-300 dark:border-gray-700 justify-between items-center px-4 xl:px-10" style={{ "zIndex": "26", "marginTop": "10px" }}>
                 <a className = "text-2xl leading-none" href="http://localhost/">
-                    <img className = "dark:hidden" src="./images/light.png" alt="" width="auto" style= {{"height": "3rem"}} />
-                    <img className = "hidden dark:inline" src="./images/dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
+                    <img className = "dark:hidden" src="/images/light.png" alt="" width="auto" style= {{"height": "3rem"}} />
+                    <img className = "hidden dark:inline" src="/images/dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
                 </a>
 
                 <ul className = "lg:ml-auto lg:mr-6 lg:items-center lg:space-x-2 flex justify-center items-center">
@@ -31,21 +31,21 @@ const Navigation = () => {
                             <NavItem link = "/contactUs">Support</NavItem>
                         </ul>
                     </li>
-                    <li className = "flex px-4 h-10 justify-center items-center">
+                    {/* <li className = "flex px-4 h-10 justify-center items-center">
                         <LightMode></LightMode>
-                    </li>
+                    </li> */}
                     <li className = "lg:hidden px-4 h-10 flex justify-center items-center">
                         <Hamburger onClick = { menuToggleHandler }></Hamburger>
                     </li>
                 </ul>
                 
                 <div className = "hidden lg:block">
-                    { !isLoggedIn && <NavButton link = "/login" className = "mr-1">LogIn</NavButton> }
-                    { !isLoggedIn && <NavButton link = "/signUp" className = "mx-1">SignUp</NavButton> }
+                    { !authCntxt.isLoggedIn && <NavButton link = "/login" className = "mr-1">LogIn</NavButton> }
+                    { !authCntxt.isLoggedIn && <NavButton link = "/signUp" className = "mx-1">SignUp</NavButton> }
                     {
-                        isLoggedIn && 
-                        <Link to = "/profile" className = "inline-block w-10 h-10 text-sm leading-normal rounded-full ml-1" style = {{ "backgroundImage": "url('./images/umang.png')" }}>
-                            <img className = "inline-block w-10 h-10 rounded-full" src = "./images/umang.png" alt = "" />
+                        authCntxt.isLoggedIn && 
+                        <Link to = "/profile" className = "inline-block w-10 h-10 text-sm leading-normal rounded-full ml-1" style = {{ "backgroundImage": "url('/images/umang.png')" }}>
+                            <img className = "inline-block w-10 h-10 rounded-full" src = "/images/umang.png" alt = "" />
                         </Link>
                     }
                 </div>
@@ -58,8 +58,8 @@ const Navigation = () => {
                     <nav className = "fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white dark:bg-gray-800 border-r dark:border-gray-700 overflow-y-auto">
                         <div className = "flex items-center mb-8">
                             <a className = "mr-auto text-lg font-semibold leading-none" href="https://phpstack-442692-2074255.cloudwaysapps.com">
-                                <img className = "h-7 dark:hidden" src="./images/light.png" alt="" width="auto" style= {{"height": "3rem"}} />
-                                <img className = "h-7 hidden dark:inline" src="./images/dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
+                                <img className = "h-7 dark:hidden" src="/images/light.png" alt="" width="auto" style= {{"height": "3rem"}} />
+                                <img className = "h-7 hidden dark:inline" src="/images/dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
                             </a>
                             <button className = "navbar-close">
                                 <svg className = "h-6 w-6 text-gray-500 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,8 +75,8 @@ const Navigation = () => {
                             </ul>
                         </div>
                         <div className = "mt-auto">
-                            { !isLoggedIn && <NavButton link = "/login" className = "w-full text-center mb-2">LogIn</NavButton> }
-                            { !isLoggedIn && <NavButton link = "/signUp" className = "w-full text-center">SignUp</NavButton> }
+                            { !authCntxt.isLoggedIn && <NavButton link = "/login" className = "w-full text-center mb-2">LogIn</NavButton> }
+                            { !authCntxt.isLoggedIn && <NavButton link = "/signUp" className = "w-full text-center">SignUp</NavButton> }
                         </div>
                     </nav>
                 </div>

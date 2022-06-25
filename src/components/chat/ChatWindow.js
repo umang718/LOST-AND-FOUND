@@ -1,56 +1,71 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useContext, useEffect } from "react";
 
 import MessageContainer from "./MessageContainer";
-let DUMMY_CHAT = [
-    {"_id": "1", "from_id": "1", "to_id": "2", "message": "Hello, How are you?", "timestamp": Date.now()},
-    {"_id": "2", "from_id": "2", "to_id": "1", "message": "I'm great How are you?", "timestamp": Date.now()},
-    {"_id": "3", "from_id": "2", "to_id": "1", "message": "You can change every details of a WhatsApp message with our Generator", "timestamp": Date.now()},
-    {"_id": "4", "from_id": "1", "to_id": "2", "message": ":Time, delivery status and many more.", "timestamp": Date.now()},
-    {"_id": "5", "from_id": "1", "to_id": "2", "message": "WhatsFake chats was made to simulate real chat conversations.", "timestamp": Date.now()},
-    {"_id": "6", "from_id": "2", "to_id": "1", "message": "Your chat snapshot will be just like if it is from Whastapp.", "timestamp": Date.now()},
-    {"_id": "7", "from_id": "1", "to_id": "2", "message": "Friends, today I am going to tell you about Fake WhatsApp", "timestamp": Date.now()},
-    {"_id": "8", "from_id": "1", "to_id": "2", "message": "Hello, How are you?", "timestamp": Date.now()},
-    {"_id": "9", "from_id": "2", "to_id": "1", "message": "First of all let me tell you that this is a WhatsApp fake chat generator,", "timestamp": Date.now()},
-    {"_id": "11", "from_id": "1", "to_id": "2", "message": "Hello, How are you?", "timestamp": Date.now()},
-    {"_id": "12", "from_id": "2", "to_id": "1", "message": "But, I guess that a forEach is more appropriate, because map is normally used to convert a array to another array and a forEach is used to make loops.", "timestamp": Date.now()},
-    {"_id": "15", "from_id": "2", "to_id": "1", "message": "If you want to know what is inside the first element of the array, you can do that without using loops. You can access it directly:", "timestamp": Date.now()},
-    {"_id": "17", "from_id": "1", "to_id": "2", "message": "It doesn't make much sense, but this works", "timestamp": Date.now()},
-    {"_id": "18", "from_id": "2", "to_id": "1", "message": "Not the answer you're looking for? Browse other questions tagged javascript or ask your own question.", "timestamp": Date.now()}
-];
-const ChatWindow = props => {
-    const [chat, sendMessage] = useState(DUMMY_CHAT);
+import { AuthContext } from "../contexts/authContext";
+import { useParams } from "react-router";
 
-    // ! Remove this function.
-    function makeID(length) {
+const ChatWindow = props => {
+    const chat = props.chat;
+    const setChat = props.setChat;
+    const chatId = useParams().chatId;
+    const authCntxt = useContext(AuthContext);
+    const userId = authCntxt.userId;
+
+    useEffect(() => {
+        setChat(old => {
+            old.chatId = chatId;
+            return old;
+        })
+    }, [])
+
+    //! Temp id.
+    const makeID = useCallback(length => {
         var result           = '';
         var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
         for ( var i = 0; i < length; i++ ) {
-          result += characters.charAt(Math.floor(Math.random() * 
-     charactersLength));
-       }
-       return result;
-    }
-
-    const scrollToBottom = () => {
-        const messagesEnd = document.getElementById("messagesEnd");
-        messagesEnd.scrollIntoView({ behavior: "smooth" });
-    }
-
-    const messageHandler = useCallback(async (e) => {
-        let message = {"_id": makeID(4), "from_id": "1", "to_id": "2", "message": e.target.value, "timestamp": Date.now()};
-        e.target.value = "";
-        sendMessage(prevChat => {
-            return [...prevChat, message];
-        });
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
     }, []);
 
-    useEffect(() => { 
+    const scrollToBottom = useCallback(() => {
+        const messagesEnd = document.getElementById("messagesEnd");
+        messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }, []);
+
+    //! Handle Errors.
+    const messageHandler = async (e) => {
+        const newId = makeID(4);
+        const msg = e.target.value;
+        e.target.value = "";
+
         scrollToBottom();
-    }, [messageHandler]);
+
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}api/v1/chat/sendMessage/${chatId}`, {
+            method: "POST",
+            body: JSON.stringify({
+                message: msg
+            }),
+            headers: { 
+                "Content-Type": "application/json", 
+                "Authorization": "Bearer " + authCntxt.token 
+            }
+        })
+
+        const data = await response.json();
+        setChat(old => {
+            let newVal = {...old};
+            newVal.messages.push(data.msg);
+            newVal.lastTime = data.msg.createdAt;
+            newVal.chatId = old.chatId;
+            return newVal;
+        });
+        console.log("After isnerting the new updated messages", props.chat);
+    }
 
     return (
         <div id = "chatWindow" className = "w-full hidden relative md:block" style = {{ "height": "calc(100vh - 92px)" }}>
@@ -58,13 +73,15 @@ const ChatWindow = props => {
                 <button onClick = { props.screenHandler } className = "md:hidden block">
                     <FontAwesomeIcon className = "text-gray-600 w-6 pr-1 dark:text-gray-300" icon = { faArrowLeft }></FontAwesomeIcon> 
                 </button>
-                <img src = "./images/avatar.png" className = "rounded-full col-span-1 h-12 w-12" alt = "c" />
+                <img src = "/images/avatar.png" className = "rounded-full col-span-1 h-12 w-12" alt = "c" />
                 <div className = "pl-2 font-semibold">
-                    <span>Vivek Joshi</span>
-                    <div className = "text-xs font-normal">Active Now</div>
+                    <span>{ props.chat.userName }</span>
+                    {/* <div className = "text-xs font-normal">Active Now</div> */}
                 </div>
             </div>
-            <MessageContainer chat = { chat }></MessageContainer>
+            {
+                <MessageContainer chatDetails = { props.chat } setChat = { setChat } />
+            }
             <div className = "absolute bottom-0 left-0 w-full">
                 <div className = "relative w-full">
                     <div className = "relative">

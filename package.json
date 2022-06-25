@@ -1,7 +1,7 @@
 {
-  "name": "practice",
+  "name": "LoFo",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
+  "proxy": "http://172.19.16.218:5000",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

@@ -12,6 +12,9 @@ const randomstring= require("randomstring");
 const { info } = require("autoprefixer");
 const bcryptjs = require("bcryptjs");
 
+  // "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE5YTQ5OTU4NWRmZTUwZTg3NjVlZTUiLCJpYXQiOjE2NTU3MDcwNDYsImV4cCI6MTY1ODI5OTA0Nn0.PKjkL6aqduU95DObbG-TOZtsWkfA2HFvRmBAwOPy5kw"
+  // "userId": "62a9a499585dfe50e8765ee5";
+
 const sendresetpasswordMail = async(name, email, token)=> {
   try {
     
