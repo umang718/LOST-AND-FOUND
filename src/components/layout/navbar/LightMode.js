@@ -5,12 +5,12 @@ const LightMode = () => {
 
     useEffect(() => {
         const storedMode = localStorage.getItem('dark');
-        if(storedMode == "true") {
+        if(storedMode === "true") {
             changeLightMode(!lightMode);
             document.body.classList.add("dark");
         }
             
-    }, [ ]);
+    }, [lightMode, changeLightMode]);
 
     // True means dark mode is on.
     const lightModeHandler = () => {

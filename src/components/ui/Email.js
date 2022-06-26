@@ -1,20 +1,21 @@
-const Email =(props) =>{
+import Label from "./Label";
+
+const Email = (props) =>{
+    const classes = "outline-none focus:shadow-md border border-1 rounded w-full p-3 leading-tight border-gray-200 dark:border-gray-600 bg-gray-50 text-sm focus:outline-none focus:bg-white text-gray-700 duration-300 dark:bg-gray-700 dark:text-gray-300 " + props.className;
+
     return (
-        <div>
-            <div className="outline-none focus:shadow-md border-2 rounded w-full py-2 px-2 leading-tight border-gray-300 dark:border-gray-600 bg-gray-100 focus:outline-none focus:bg-white text-gray-700 duration-300 dark:bg-gray-700 dark:text-gray-300 mb-5">
-            <label class="block">
-            <span class="block text-sm font-medium text-slate-700">Email</span>
-            <input type="email" class="peer ... w-full h-9 rounded"/>
-            <p class="mt-2 invisible peer-invalid:visible text-red-600 text-sm">
-            Please provide a valid email address.
-            </p>
-        </label>
-        </div>
+        <div className="mb-4">
+            { props.showLabel && <Label label = {props.label}></Label> }
+            <input onChange={props.onChange} name = { props.name } type = "email" placeholder = { props.label } className = { classes } id = { props.name } readOnly = { props.readOnly } />
         </div>
     );
-        
-
-    
 };
 
-export default Email;
+Email.defaultProps = {
+    showLabel: false,
+    type: "email",
+    label: "Please enter some description in placeholder property of the element.",
+    readOnly: false,
+};
+
+export default Email

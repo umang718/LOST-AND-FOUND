@@ -14,8 +14,8 @@ const ProfileIndex = () => {
                 <div className = "relative flex flex-col min-w-0 break-word w-full mb-6">
                     <div className = "flex-auto">
                         <div className = "tab-content tab-space">
-                            { tabName == "#home" && <div className = "block" id="tab-general"> <GeneralSettings></GeneralSettings> </div> }
-                            { tabName == "#password" &&  <div id="tab-changePassword"> <PasswordSettings></PasswordSettings> </div> }
+                            { tabName === "#home" && <div className = "block" id="tab-general"> <GeneralSettings></GeneralSettings> </div> }
+                            { tabName === "#password" &&  <div id="tab-changePassword"> <PasswordSettings></PasswordSettings> </div> }
                         </div>
                     </div>
                 </div>

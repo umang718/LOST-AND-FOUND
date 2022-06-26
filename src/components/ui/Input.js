@@ -6,7 +6,7 @@ const Input = (props) => {
     return (
         <div className="mb-4">
             { props.showLabel && <Label label = {props.label}></Label> }
-            <input name = { props.name } type = { props.type } placeholder = { props.label } className = { classes } id = { props.name } readOnly = { props.readOnly } />
+            <input onChange={props.onChange} name = { props.name } type = { props.type } placeholder = { props.label } className = { classes } id = { props.name } readOnly = { props.readOnly } />
         </div>
     );
 }

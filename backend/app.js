@@ -1,10 +1,12 @@
 const express = require("express");
 require('dotenv').config();
+const cors = require("cors");
 //require('express-async-errors');
 const app = express();
 
 // It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json())
+app.use(cors());
 
 require('./models/User');
 

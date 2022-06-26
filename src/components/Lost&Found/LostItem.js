@@ -1,11 +1,9 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import Form from "../ui/Form";
 import Button from '../ui/Button';
 import Textarea from '../ui/Textarea';
-import Label from "../ui/Label";
 import Input from "../ui/Input";
-import Password from "../ui/Password";
-import Modal from "../Modals/Modal";
 import FileUpload from "../ui/FileUpload";
 
 function LostItem() {

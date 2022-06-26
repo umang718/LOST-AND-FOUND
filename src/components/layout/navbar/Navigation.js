@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/authContext";
 import Hamburger from "./Hamburger";
 import LightMode from "./LightMode";
 import NavButton from "./NavButton";
 import NavItem from "./NavItem";
 
 const Navigation = () => {
+    const authCntxt = useContext(AuthContext);
     const [showMenu, toggleMenu] = useState(false);
     
     const menuToggleHandler = () => {
         console.log("Function Called");
         toggleMenu(!showMenu)
     }
+    const logoutHandler = () =>{
+        authCntxt.logout();
+    }
 
     return (
         <div>
             <nav className = "flex border relative  shadow-md rounded duration-300 ease-in-out py-2 dark:bg-midnight-200 theme text-gray-600 dark:text-gray-300 dark:border-gray-700 justify-between items-center px-4 xl:px-10" style={{ "zIndex": "26", "width": "98%", "marginLeft": "1%", "marginTop": "10px" }}>
-                <a className = "text-2xl leading-none" href="#">
+                <a className = "text-2xl leading-none" href = "www.google.com">
                     <img className = "dark:hidden" src="./images/light.png" alt="" width="auto" style= {{"height": "3rem"}} />
                     <img className = "hidden dark:inline" src="./images/dark.png" alt="" width="auto" style= {{"height": "3rem"}} />
                 </a>
@@ -37,10 +42,17 @@ const Navigation = () => {
                         <Hamburger onClick = { menuToggleHandler }></Hamburger>
                     </li>
                 </ul>
-                <div className = "hidden lg:block" x-data="{isProfileMenuOpen: false}">
-                    <NavButton className = "mr-1">LogIn</NavButton>
-                    <NavButton className = "ml-1">SignUp</NavButton>
-                </div>
+                {
+                    !authCntxt.isLoggedIn && 
+                    <div className = "hidden lg:block" x-data="{isProfileMenuOpen: false}">
+                        <NavButton className = "mr-1">LogIn</NavButton>
+                        <NavButton className = "ml-1">SignUp</NavButton>
+                    </div>
+                }
+                {
+                    authCntxt.isLoggedIn && 
+                    <button onClick={logoutHandler}> logout</button>
+                }
             </nav>
 
             
@@ -70,12 +82,12 @@ const Navigation = () => {
                         </div>
                         <div className = "mt-auto">
                             <div className = "pt-6">
-                                <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="#">
+                                <a href = "www.google.com" className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200">
                                     LogIn
                                 </a>
                             </div>
                             <div className = "pt-6">
-                                <a className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200" href="#">
+                                <a href = "www.google.com" className = "block py-3 text-center text-sm leading-normal rounded bg-indigo-50 hover:bg-indigo-200 text-indigo-500 font-semibold transition duration-200">
                                     SignUp
                                 </a>
                             </div>                
