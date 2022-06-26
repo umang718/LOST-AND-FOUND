@@ -22,6 +22,7 @@ const Password = (props) => {
                         className = "outline-none focus:shadow-md border-2 rounded w-full p-3 leading-tight border-gray-300 dark:border-gray-600 bg-gray-50 focus:outline-none focus:bg-white text-gray-700 pr-16 js-password duration-300 dark:bg-gray-700 text-sm dark:text-gray-200" 
                         id="password" 
                         placeholder = { props.label } 
+                        onChange={props.onChange}
                         name = { props.name } 
                     />
                     <div className = "absolute cursor-pointer inset-y-0 right-0 px-3 flex items-center text-sm border-l-0 leading-5 border-gray-300 dark:bg-gray-700 dark:text-gray-200 border dark:border-gray-600 bg-gray-100" onClick = {passVisibilityHandler}>

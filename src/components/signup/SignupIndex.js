@@ -29,7 +29,7 @@ const SignupIndex = () =>
     const postData = async (e) => {
       e.preventDefault();
   
-        const { name, email,  degree, password  } = user;
+        const { name, email, degree, password } = user;
 
         const resp = await fetch(`${ process.env.REACT_APP_SERVER_URL }api/v1/auth/register`, {
             method: "POST",
@@ -56,11 +56,11 @@ const SignupIndex = () =>
     return (
         <div className="bg-[#DBF4F9] min-h-screen grid grid-cols-1 md:grid-cols-2">
             <SignupMessage></SignupMessage>
-            <Form submitHandler = { postData } method="POST" className="bg-white h-fit pt-10 pb-10 my-auto w-7/12 mx-auto">
-                <Input label="Firstname" name = "name" className="mb-5" value={user.name} onChange={handleInputs} />
-                <Email value={user.email} onChange={handleInputs} label="Email" name = "email" className="mb-5"></Email>
-                <DegreeInput name = "degree" value={user.degree} onChange={handleInputs} label="Degree"> </DegreeInput>
-                <Password name = "password" value={user.password} onChange={handleInputs}> </Password>
+            <Form submitHandler = { postData } method="POST" className="bg-white h-fit pt-10 pb-10 my-auto w-7/12 mx-auto" >
+                <Input label = "Firstname" name = "name" className="mb-5" value={user.name} onChange={handleInputs} />
+                <Email value = {user.email} onChange={handleInputs} label="Email" name = "email" className="mb-5"></Email>
+                <DegreeInput name = "degree" value = { user.degree } onChange={handleInputs} label="Degree"> </DegreeInput>
+                <Password name = "password" value = { user.password } onChange={handleInputs}> </Password>
                 
                 <Button type = "submit" className="mx-auto mb-0">
                     Signup
