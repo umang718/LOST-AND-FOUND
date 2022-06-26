@@ -19,7 +19,7 @@ const Password = (props) => {
                 <div className = "relative">
                     <input 
                         type = { display ? "text" : "password" } 
-                        className = "outline-none focus:shadow-md border-2 rounded w-full p-3 leading-tight border-gray-300 dark:border-gray-600 bg-gray-100 focus:outline-none focus:bg-white text-gray-700 pr-16 js-password duration-300 dark:bg-gray-700 text-sm dark:text-gray-200" 
+                        className = "outline-none focus:shadow-md border-2 rounded w-full p-3 leading-tight border-gray-300 dark:border-gray-600 bg-gray-50 focus:outline-none focus:bg-white text-gray-700 pr-16 js-password duration-300 dark:bg-gray-700 text-sm dark:text-gray-200" 
                         id="password" 
                         placeholder = { props.label } 
                         name = { props.name } 

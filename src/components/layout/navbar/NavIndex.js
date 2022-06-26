@@ -3,16 +3,18 @@ import { useState, useContext } from "react";
 
 import NavItem from "./NavItem";
 import Hamburger from "./Hamburger";
-// import LightMode from "./LightMode";
 import NavButton from "./NavButton";
 import { AuthContext } from "../../contexts/authContext";
 
 const Navigation = () => {
-    const [showMenu, toggleMenu] = useState(false);
     const authCntxt = useContext(AuthContext);
+    const [showMenu, toggleMenu] = useState(false);
 
     const menuToggleHandler = () => {
         toggleMenu(!showMenu)
+    }
+    const logoutHandler = () =>{
+        authCntxt.logout();
     }
 
     return (
@@ -27,7 +29,7 @@ const Navigation = () => {
                     <li className = "hidden lg:block">
                         <ul className = "lg:ml-auto lg:items-center lg:space-x-12 flex justify-center items-center">
                             <NavItem link = "/">Home</NavItem>
-                            <NavItem link = "/chat">Messages</NavItem>
+                            { authCntxt.isLoggedIn && <NavItem link = "/chat">Messages</NavItem> }
                             <NavItem link = "/contactUs">Support</NavItem>
                         </ul>
                     </li>
@@ -70,7 +72,7 @@ const Navigation = () => {
                         <div>
                             <ul>
                                 <NavItem link = "/">Home</NavItem>
-                                <NavItem link = "/chat">Messages</NavItem>
+                                { authCntxt.isLoggedIn && <NavItem link = "/chat">Messages</NavItem> }
                                 <NavItem link = "/contactUs">Support</NavItem>
                             </ul>
                         </div>

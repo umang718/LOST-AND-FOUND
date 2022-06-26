@@ -16,7 +16,7 @@ const Footer = () => {
             </div> */}
             <div className = "flex md:flex-row flex-col  w-full dark:border-gray-700 border-t justify-center items-center gap-4">
                 <div className = "pt-3 pb-2">
-                    <a className = "inline-block mb-0 text-gray-900 text-lg font-semibold" href="#">
+                    <a className = "inline-block mb-0 text-gray-900 text-lg font-semibold" href="www.google.com">
                         <img className = "h-12" src="#" alt="" width="auto" />
                     </a>
                 </div>

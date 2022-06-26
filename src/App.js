@@ -13,8 +13,6 @@ import { AuthContext, AuthContextProvider } from "./components/contexts/authCont
 
 const App = () =>  {
     const authCntxt = useContext(AuthContext);
-    //! Remove this.
-    authCntxt.isLoggedIn = true;
 
     return (
         <AuthContextProvider>
@@ -22,15 +20,14 @@ const App = () =>  {
             <Routes>
                 <Route path = "/" element = { <FeedCard /> } />
                 <Route path = "/contactUs" element = { <ContactIndex /> } />
-                //! Put ! in isLoggedIn Condition here.
-                <Route path = "/signUp" element = { authCntxt.isLoggedIn ? <SignupIndex /> : <Navigate to = "/" /> } />
-                <Route path = "/login" element = { authCntxt.isLoggedIn ? <LoginIndex /> : <Navigate to = "/" /> } />
+                <Route path = "/signUp" element = { !authCntxt.isLoggedIn ? <SignupIndex /> : <Navigate to = "/" /> } />
+                <Route path = "/login" element = { !authCntxt.isLoggedIn ? <LoginIndex /> : <Navigate to = "/" /> } />
                 <Route path = "/profile" element = { authCntxt.isLoggedIn ? <ProfileIndex /> : <Navigate to = "/login" /> } />
-                <Route path = "/chat/*" element = { authCntxt.isLoggedIn ? <ChatIndex /> : <Navigate to = "/login" /> }></Route>
+                <Route path = "/chat/:chatId" element = { authCntxt.isLoggedIn ? <ChatIndex /> : <Navigate to = "/login" /> } />
                 <Route path = "*" element = { <NotFound /> }></Route>
             </Routes>
         </AuthContextProvider>
     );
 }
 
-export default App; 
+export default App;

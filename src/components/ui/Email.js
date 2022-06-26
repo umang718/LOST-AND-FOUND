@@ -6,7 +6,7 @@ const Email = (props) =>{
     return (
         <div className="mb-4">
             { props.showLabel && <Label label = {props.label}></Label> }
-            <input name = { props.name } type = "email" placeholder = { props.label } className = { classes } id = { props.name } readOnly = { props.readOnly } />
+            <input onChange={props.onChange} name = { props.name } type = "email" placeholder = { props.label } className = { classes } id = { props.name } readOnly = { props.readOnly } />
         </div>
     );
 };
@@ -18,4 +18,4 @@ Email.defaultProps = {
     readOnly: false,
 };
 
-export default Email;
+export default Email

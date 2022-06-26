@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import NotFound from "../errors/NotFound";
+import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
 import ChatList from "./ChatList";
 import ChatWindow from "./ChatWindow";
+import { AuthContext } from "../contexts/authContext";
+import LoginIndex from "../login/LoginIndex";
 
 const ChatIndex = () => {
     const [chat, setChat] = useState({userName: "", chatId: "", messages: [], lastTime: ""});
+    const authCntxt = useContext(AuthContext);
 
     useEffect(() => {
         document.title = "Chat - LoFo"
@@ -32,12 +36,7 @@ const ChatIndex = () => {
     return (
         <div className = "w-full flex mt-3" style = {{ "height": "calc(100vh - 300px)" }}>
             <ChatList setChat = { setChat } screenHandler = { screenHandler }></ChatList>
-            <Routes>
-                <Route 
-                    path = ":chatId"
-                    element = { <ChatWindow setChat = { setChat } chat = { chat } screenHandler = { screenHandler } /> } 
-                />
-            </Routes>
+            <ChatWindow setChat = { setChat } chat = { chat } screenHandler = { screenHandler } />
         </div>
     );
 }

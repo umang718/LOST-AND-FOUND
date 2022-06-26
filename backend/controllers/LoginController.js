@@ -52,20 +52,14 @@ const sendresetpasswordMail = async(name, email, token)=> {
 
 }
 
-// exports.LoginController = {
-//     // Return all the items.
-//     index: (req, res) => {
-//         //
-//     }
-// }
-
 const register = async (req, res, next) => {
   try {
+    console.log(req.body);
     const user = await User.create({ ...req.body });
-    const token = jwt.sign({ userId: user._id, name:user.name }, 'jwtSecret',{
+    const token = jwt.sign({ userId: user._id, name:user.name }, 'jwtSecret', {
       expiresIn:'30d', 
     })
-    res.status(StatusCodes.CREATED).json({ user:{name: user.name },token })  
+    res.status(StatusCodes.CREATED).json({ user:{name: user.name }, token, user_id: user._id, })  
   } catch (err) {
     return next(err);
   }
@@ -93,10 +87,11 @@ const login = async (req, res, next) => {
     next(new UnauthenticatedError('Invalid Credentials')) 
     return;
   }
+  
 
   // compare password
   const token = user.createJWT()
-  res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
+  res.status(StatusCodes.OK).json({ user: { name: user.name, user_id: user._id}, token })
 };
 
 const forgetPassword = async(req,res) => {
