@@ -77,7 +77,7 @@ const login = async (req, res, next) => {
   }
 
   const user = await User.findOne({ email })
-  //console.log(user);
+  console.log(user);
   if (!user) {
     next(new UnauthenticatedError('Invalid Credentials')) 
     return;

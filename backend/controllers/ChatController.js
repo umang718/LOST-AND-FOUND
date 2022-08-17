@@ -11,8 +11,8 @@ exports.ChatController = {
         let chats = await Chat.find().where({
             $or: [{ user1: user_id }, { user2: user_id }]
         }).populate({path: "message", select: "from_id timestamp message updatedAt createdAt"})
-        .populate({match: { _id: { $ne: user_id}}, path: "user1", select: "first_name last_name avatar"})
-        .populate({match: { _id: { $ne: user_id}}, path: "user2", select: "first_name last_name avatar"})
+        .populate({match: { _id: { $ne: user_id}}, path: "user1", select: "name avatar"})
+        .populate({match: { _id: { $ne: user_id}}, path: "user2", select: "name avatar"})
         .sort({"timestamp": -1});
 
         res.status(200).json({
@@ -48,11 +48,12 @@ exports.ChatController = {
     },
 
     sendMessage: async (req, res, next) => {
-
         // -> Update the chats last message.
         const chatId = req.params.chatId;
         const user_id = req.user.userId;
         
+        //! Check for invalid user_id and chatId
+
         let chat = await Chat.findOne().where({
             $or: [{ "user1": user_id, "_id": chatId }, { "user2": user_id, "_id": chatId }]
         }).exec();
@@ -85,17 +86,23 @@ exports.ChatController = {
         let msgs;
         
         // Check if the messages required are old or new.
-        if(createdAt) {
-            msgs = await Message.find({
-                "createdAt": { $gt : createdAt }
-            }).select("from_id message createdAt").where({
-                chat_id: chatId
-            }).sort({"timestamp": -1});
-        }
-        else {
-            msgs = await Message.find().select("from_id message createdAt").where({
-                chat_id: chatId
-            }).sort({"timestamp": -1});
+        try {
+            if(createdAt) {
+                msgs = await Message.find({
+                    "createdAt": { $gt : createdAt }
+                }).select("from_id message createdAt").where({
+                    chat_id: chatId
+                }).sort({"timestamp": -1});
+            }
+            else {
+                msgs = await Message.find().select("from_id message createdAt").where({
+                    chat_id: chatId
+                }).sort({"timestamp": -1});
+            }
+        } catch (err) {
+            return res.status(500).json({
+                error_message: err.message,
+            });
         }
         
         res.status(200).json({

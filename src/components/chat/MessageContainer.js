@@ -7,7 +7,6 @@ import { AuthContext } from "../contexts/authContext";
 
 //! why is this component loosing values?
 const MessageContainer = props => {
-    
     const setChat = props.setChat;
     const authCntxt = useContext(AuthContext);
     const userId = authCntxt.userId;
@@ -29,6 +28,8 @@ const MessageContainer = props => {
                 lastTime = chatDetails.messages[chatDetails.messages.length - 1].createdAt;
         }
 
+        if(!chatId)
+            return;
         var networkPromise = await fetch(`${process.env.REACT_APP_SERVER_URL}api/v1/chat/getMessage/${chatId}`, {
             method: "POST",
             body: JSON.stringify({
@@ -49,10 +50,18 @@ const MessageContainer = props => {
                         newVal.messages.push(...data.messages);
                         newVal.lastTime = data.messages[data.messages.length - 1].createdAt;
                         newVal.chatId = props.chatDetails.chatId;
+                        newVal.load = false;
                         return newVal;
                     });
                     scrollToBottom();
                 }
+            }
+            if(data.messages.length == 0 && props.chatDetails.messages.length == 0 && props.chatDetails.load) {
+                setChat(old => {
+                    let newVal = { ...old };
+                    newVal.load = false;
+                    return newVal;
+                });
             }
         });
     }
@@ -72,9 +81,9 @@ const MessageContainer = props => {
                     props.chatDetails.messages.map((msg, it) => {
                         return msg.from_id === userId
                             ? <SentMsg className = { it === 0 ? "mt-auto" : "" } key = { msg._id }> { msg.message } </SentMsg>
-                            : <ReceivedMsg className = { it === 0 ? "mt-auto" : "" } key = { msg._id }> { msg.message }</ReceivedMsg>
+                            : <ReceivedMsg className = { it === 0 ? "mt-auto" : "" } key = { msg._id }> { msg }</ReceivedMsg>
                     })
-                    : "Nothing to show"
+                    : ( props.chatDetails.load ? "Loading" : "Send First Message Icon")
             }
             <div style = {{ float:"left", clear: "both" }} id = "messagesEnd">
             </div>

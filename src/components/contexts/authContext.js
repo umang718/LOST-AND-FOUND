@@ -11,7 +11,7 @@ export const AuthContext = createContext({
 //! Set Auto-Logout
 export const AuthContextProvider = props => {
     const initialToken = localStorage.getItem("token");
-    let userId = localStorage.getItem("userId");
+    let userId = localStorage.getItem("user_id");
     const [token, setToken, setUser] = useState(initialToken);
     const userIsLoggedIn = !!token;
 

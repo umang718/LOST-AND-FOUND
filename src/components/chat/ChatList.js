@@ -5,7 +5,6 @@ import ChatWith from "./ChatWith";
 import EmptyList from "./EmptyList";
 
 const ChatList = props => {
-    // console.log("ChatList render");
     const setChat = props.setChat;
     const ChatCount = [1, 2, 3, 4, 5];
     const authCntxt = useContext(AuthContext);
@@ -19,7 +18,7 @@ const ChatList = props => {
                 "Authorization": "Bearer " + authCntxt.token,
             }
         });
-        
+
         let data = await response.json();
         setChatsList(data.chats);
         setLoadingList(false);
@@ -33,7 +32,7 @@ const ChatList = props => {
         <div id = "chatList" className = "md:block md:w-96 w-full duration-300 bg-gray-50 overflow-y-scroll" style = {{ "height": "calc(100vh - 95px)" }}>
             { !loadingList && (
                     chatList.length === 0 ? <EmptyList /> : chatList.map(chat => {
-                        return <ChatWith screenHandler = { props.screenHandler } chat = { chat } key = { chat._id } setChat = { setChat }></ChatWith>
+                        return <ChatWith currChat = { props.currChat } screenHandler = { props.screenHandler } chat = { chat } key = { chat._id } setChat = { setChat }></ChatWith>
                     })
                 )
             }

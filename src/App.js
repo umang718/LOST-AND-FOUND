@@ -13,9 +13,8 @@ import { AuthContext, AuthContextProvider } from "./components/contexts/authCont
 
 const App = () =>  {
     const authCntxt = useContext(AuthContext);
-
     return (
-        <AuthContextProvider>
+        <>
             <Navigation></Navigation>
             <Routes>
                 <Route path = "/" element = { <FeedCard /> } />
@@ -23,10 +22,11 @@ const App = () =>  {
                 <Route path = "/signUp" element = { !authCntxt.isLoggedIn ? <SignupIndex /> : <Navigate to = "/" /> } />
                 <Route path = "/login" element = { !authCntxt.isLoggedIn ? <LoginIndex /> : <Navigate to = "/" /> } />
                 <Route path = "/profile" element = { authCntxt.isLoggedIn ? <ProfileIndex /> : <Navigate to = "/login" /> } />
-                <Route path = "/chat/:chatId" element = { authCntxt.isLoggedIn ? <ChatIndex /> : <Navigate to = "/login" /> } />
+                <Route path = "/chat/:chatId" element = { <ChatIndex /> } />
+                <Route path = "/chat/" element = { <ChatIndex /> } />
                 <Route path = "*" element = { <NotFound /> }></Route>
             </Routes>
-        </AuthContextProvider>
+        </>
     );
 }
 
